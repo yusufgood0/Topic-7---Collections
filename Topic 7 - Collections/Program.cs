@@ -13,14 +13,13 @@ namespace Topic_7_collections
             ("4 – Add a vegetable", "Enter a vegetable to add to the list"),
             ("5 – Sort list", "List Sorted"),
             ("6 – Clear the list", "List Cleared"),
+            ("7 - Exit", "Have a great day"),
         };
         static void Main(string[] args)
         {
             List<string> myList = new List<string>();
             string stringInput;
             int intInput;
-
-
 
             myList.Add("CARROT");
             myList.Add("BEET");
@@ -31,12 +30,15 @@ namespace Topic_7_collections
             while (true)
             {
                 Console.Clear();
+
+                // draw list
                 Console.WriteLine("\nCurrent List:");
                 for (int i = 0; i < myList.Count; i++)
                 {
                     Console.WriteLine($"{i}: {myList[i]}");
                 }
 
+                // display menu
                 Console.WriteLine("\nOptions:");
                 foreach ((string Option, string Question) option in Options)
                 {
@@ -44,13 +46,13 @@ namespace Topic_7_collections
                 }
                 Console.Write("Select an option: ");
 
-
-
+                // get input and validate
                 while (!int.TryParse(Console.ReadLine(), out intInput) || intInput < 0 || intInput > Options.Length)
                 {
                     Console.WriteLine("Invalid Menu Option. Try again: ");
                 }
 
+                // ask question based on menu option
                 Console.WriteLine(Options[intInput - 1].Question);
 
                 switch (intInput)
@@ -116,6 +118,13 @@ namespace Topic_7_collections
                         break;
                 }
 
+                // exit program
+                if (intInput == 7)
+                {
+                    break;
+                }
+
+                // redraw list
                 Console.WriteLine("\nCurrent List:");
                 for (int i = 0; i < myList.Count; i++)
                 {
